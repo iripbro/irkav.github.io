@@ -1,532 +1,437 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Ирка 💝 С 14 Февраля!</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", "Arial", sans-serif;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
 
-      body {
-        background: linear-gradient(
-          135deg,
-          #ff9a9e 0%,
-          #fad0c4 50%,
-          #ffd1ff 100%
-        );
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 12px;
-        position: relative;
-        overflow-x: hidden;
-      }
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-      /* Цветы и сердца на фоне */
-      .floating-decor {
-        position: fixed;
-        font-size: clamp(60px, 15vw, 150px);
-        opacity: 0.15;
-        pointer-events: none;
-        z-index: 0;
-        white-space: nowrap;
-        user-select: none;
-      }
+        /* Цветы и сердца на фоне */
+        .floating-decor {
+            position: fixed;
+            font-size: clamp(60px, 15vw, 150px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            user-select: none;
+        }
 
-      .decor-1 {
-        top: 0;
-        left: -20px;
-        transform: rotate(-15deg);
-      }
-      .decor-2 {
-        bottom: 0;
-        right: -30px;
-        transform: rotate(10deg);
-      }
-      .decor-3 {
-        top: 20%;
-        right: 5%;
-        font-size: clamp(40px, 10vw, 80px);
-      }
-      .decor-4 {
-        bottom: 15%;
-        left: 2%;
-        font-size: clamp(50px, 12vw, 100px);
-      }
+        .decor-1 { top: 0; left: -20px; transform: rotate(-15deg); }
+        .decor-2 { bottom: 0; right: -30px; transform: rotate(10deg); }
+        .decor-3 { top: 20%; right: 5%; font-size: clamp(40px, 10vw, 80px); }
+        .decor-4 { bottom: 15%; left: 2%; font-size: clamp(50px, 12vw, 100px); }
 
-      .container {
-        max-width: 600px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-radius: 40px 40px 30px 30px;
-        box-shadow: 0 20px 40px rgba(199, 21, 133, 0.4);
-        padding: 25px 18px;
-        border: 3px solid white;
-        position: relative;
-        z-index: 10;
-        margin: 10px auto;
-      }
-
-      /* ПРОСТАЯ НАДПИСЬ ИРКА */
-      .name-container {
-        text-align: center;
-        margin: 5px 0 10px;
-      }
-
-      h1 {
-        font-size: clamp(48px, 15vw, 80px);
-        font-weight: 900;
-        color: #c71585; /* Простой розовый цвет */
-        text-shadow:
-          3px 3px 0 #fff,
-          5px 5px 0 #ffb6c1;
-        letter-spacing: 2px;
-        line-height: 1.1;
-      }
-
-      .sub-header {
-        text-align: center;
-        font-size: clamp(20px, 6vw, 28px);
-        color: #b0306e;
-        font-weight: bold;
-        background: rgba(255, 240, 245, 0.9);
-        display: inline-block;
-        padding: 8px 22px;
-        border-radius: 50px;
-        margin: 5px auto 15px;
-        border: 2px dashed #ff69b4;
-        box-shadow: 0 0 0 3px white;
-        backdrop-filter: blur(5px);
-      }
-
-      /* ВИДЖЕТ ФОТО - фото не обрезается */
-      .photo-widget {
-        background: white;
-        border-radius: 50px 50px 30px 30px;
-        padding: 20px 15px 15px;
-        margin: 15px 0;
-        border: 3px solid #ffb6c1;
-        box-shadow:
-          inset 0 0 15px #ffc0cb,
-          0 8px 0 #d87093;
-      }
-
-      .widget-title {
-        font-size: clamp(22px, 7vw, 32px);
-        font-weight: bold;
-        color: #d43f7a;
-        text-align: center;
-        margin-top: -38px;
-        margin-bottom: 15px;
-      }
-
-      .widget-title span {
-        background: white;
-        padding: 5px 18px;
-        border-radius: 40px;
-        border: 3px solid #ff1493;
-        box-shadow: 0 4px 0 #ba2d6b;
-        display: inline-block;
-      }
-
-      .image-wrapper {
-        text-align: center;
-        border-radius: 30px;
-        overflow: hidden;
-        border: 5px solid white;
-        box-shadow:
-          0 0 0 3px #ff69b4,
-          0 10px 15px #8b3a5e;
-        background: #ffe4ec;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #fff0f5;
-      }
-
-      .image-wrapper img {
-        max-width: 100%;
-        max-height: 500px;
-        width: auto;
-        height: auto;
-        display: block;
-        object-fit: contain;
-        margin: 0 auto;
-      }
-
-      /* ВИДЖЕТЫ ПЛЮСОВ */
-      .widgets-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 20px 0;
-      }
-
-      .plus-widget {
-        background: white;
-        border-radius: 60px;
-        padding: 14px 18px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        border: 2px solid #ffb6c1;
-        box-shadow:
-          0 5px 0 #ffb6c1,
-          0 5px 10px rgba(0, 0, 0, 0.03);
-        transition: 0.2s;
-      }
-
-      .plus-widget:active {
-        transform: translateX(5px);
-      }
-
-      .plus-emoji {
-        font-size: clamp(30px, 8vw, 40px);
-        min-width: 50px;
-        text-align: center;
-      }
-
-      .plus-text {
-        font-size: clamp(18px, 5vw, 22px);
-        font-weight: 600;
-        color: #b0306e;
-      }
-
-      /* ВИДЖЕТ МИНУСОВ */
-      .minus-widget {
-        background: #ffe4f0;
-        border-radius: 50px;
-        padding: 15px;
-        margin: 15px 0 20px;
-        border: 4px dashed #ff1493;
-        box-shadow: 0 7px 0 #d87093;
-      }
-
-      .minus-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .minus-emoji {
-        font-size: clamp(35px, 10vw, 50px);
-      }
-
-      .minus-text {
-        font-size: clamp(24px, 7vw, 32px);
-        font-weight: 900;
-        color: #c71585;
-        text-align: center;
-      }
-
-      .minus-sub {
-        font-size: clamp(18px, 5vw, 24px);
-        color: #db7093;
-        text-align: center;
-        margin: 5px 0;
-      }
-
-      .minus-no {
-        font-size: clamp(28px, 8vw, 40px);
-        font-weight: 900;
-        color: #c71585;
-        text-align: center;
-        background: white;
-        padding: 8px 15px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-top: 8px;
-      }
-
-      /* КНОПКИ-ВИДЖЕТЫ */
-      .buttons-panel {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 20px 0;
-      }
-
-      .btn-widget {
-        border: none;
-        background: white;
-        padding: 16px 18px;
-        border-radius: 60px;
-        font-size: clamp(18px, 5vw, 22px);
-        font-weight: bold;
-        color: #b0306e;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        cursor: pointer;
-        border: 2px solid #ff1493;
-        box-shadow:
-          0 6px 0 #ba2d6b,
-          0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: 0.1s ease;
-        width: 100%;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .btn-widget:active {
-        transform: translateY(6px);
-        box-shadow:
-          0 0 0 #ba2d6b,
-          0 5px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn-emoji {
-        font-size: clamp(30px, 8vw, 38px);
-        min-width: 50px;
-        text-align: center;
-      }
-
-      /* ВИДЖЕТ ПОДАРКА */
-      .gift-widget {
-        background: linear-gradient(135deg, #ff1493, #c71585);
-        border: 3px solid white;
-        padding: 18px 15px;
-        border-radius: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        cursor: pointer;
-        box-shadow:
-          0 10px 0 #8b0f5e,
-          0 10px 25px #ff69b4;
-        transition: 0.1s;
-        margin: 15px 0 10px;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .gift-widget:active {
-        transform: translateY(8px);
-        box-shadow:
-          0 2px 0 #8b0f5e,
-          0 10px 20px #ff69b4;
-      }
-
-      .gift-emoji {
-        font-size: clamp(35px, 10vw, 50px);
-        filter: drop-shadow(0 3px 3px #71004b);
-      }
-
-      .gift-text {
-        font-size: clamp(24px, 7vw, 32px);
-        font-weight: 900;
-        color: white;
-        text-shadow: 2px 2px 0 #a0006b;
-        white-space: nowrap;
-      }
-
-      .footer-note {
-        text-align: center;
-        font-size: clamp(14px, 4vw, 16px);
-        color: white;
-        background: #d43f7a;
-        padding: 10px;
-        border-radius: 40px;
-        margin-top: 15px;
-        border: 2px solid white;
-      }
-
-      /* Для очень маленьких экранов */
-      @media (max-width: 380px) {
         .container {
-          padding: 18px 12px;
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 20px 40px rgba(199, 21, 133, 0.4);
+            padding: 25px 18px;
+            border: 3px solid white;
+            position: relative;
+            z-index: 10;
+            margin: 10px auto;
         }
+
+        /* ПРОСТАЯ НАДПИСЬ ИРКА */
+        .name-container {
+            text-align: center;
+            margin: 5px 0 10px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 15vw, 80px);
+            font-weight: 900;
+            color: #c71585;
+            text-shadow: 3px 3px 0 #fff, 5px 5px 0 #ffb6c1;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .sub-header {
+            text-align: center;
+            font-size: clamp(20px, 6vw, 28px);
+            color: #b0306e;
+            font-weight: bold;
+            background: rgba(255, 240, 245, 0.9);
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 50px;
+            margin: 5px auto 15px;
+            border: 2px dashed #ff69b4;
+            box-shadow: 0 0 0 3px white;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ВИДЖЕТ ФОТО */
+        .photo-widget {
+            background: white;
+            border-radius: 50px 50px 30px 30px;
+            padding: 20px 15px 15px;
+            margin: 15px 0;
+            border: 3px solid #ffb6c1;
+            box-shadow: inset 0 0 15px #ffc0cb, 0 8px 0 #d87093;
+        }
+
+        .widget-title {
+            font-size: clamp(22px, 7vw, 32px);
+            font-weight: bold;
+            color: #d43f7a;
+            text-align: center;
+            margin-top: -38px;
+            margin-bottom: 15px;
+        }
+
+        .widget-title span {
+            background: white;
+            padding: 5px 18px;
+            border-radius: 40px;
+            border: 3px solid #ff1493;
+            box-shadow: 0 4px 0 #ba2d6b;
+            display: inline-block;
+        }
+
+        .image-wrapper {
+            text-align: center;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 0 0 3px #ff69b4, 0 10px 15px #8b3a5e;
+            background: #ffe4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff0f5;
+        }
+
+        .image-wrapper img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        /* ВИДЖЕТЫ ПЛЮСОВ */
+        .widgets-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
         .plus-widget {
-          padding: 10px 12px;
+            background: white;
+            border-radius: 60px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 5px 0 #ffb6c1, 0 5px 10px rgba(0,0,0,0.03);
+            transition: 0.2s;
         }
+
+        .plus-widget:active {
+            transform: translateX(5px);
+        }
+
+        .plus-emoji {
+            font-size: clamp(30px, 8vw, 40px);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .plus-text {
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: 600;
+            color: #b0306e;
+        }
+
+        /* ВИДЖЕТ МИНУСОВ */
+        .minus-widget {
+            background: #ffe4f0;
+            border-radius: 50px;
+            padding: 15px;
+            margin: 15px 0 20px;
+            border: 4px dashed #ff1493;
+            box-shadow: 0 7px 0 #d87093;
+        }
+
+        .minus-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .minus-emoji {
+            font-size: clamp(35px, 10vw, 50px);
+        }
+
+        .minus-text {
+            font-size: clamp(24px, 7vw, 32px);
+            font-weight: 900;
+            color: #c71585;
+            text-align: center;
+        }
+
+        .minus-sub {
+            font-size: clamp(18px, 5vw, 24px);
+            color: #db7093;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .minus-no {
+            font-size: clamp(28px, 8vw, 40px);
+            font-weight: 900;
+            color: #c71585;
+            text-align: center;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* КНОПКИ-ВИДЖЕТЫ */
+        .buttons-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
         .btn-widget {
-          padding: 12px 15px;
+            border: none;
+            background: white;
+            padding: 16px 18px;
+            border-radius: 60px;
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: bold;
+            color: #b0306e;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            border: 2px solid #ff1493;
+            box-shadow: 0 6px 0 #ba2d6b, 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.1s ease;
+            width: 100%;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
+
+        .btn-widget:active {
+            transform: translateY(6px);
+            box-shadow: 0 0 0 #ba2d6b, 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-emoji {
+            font-size: clamp(30px, 8vw, 38px);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* ВИДЖЕТ ПОДАРКА */
         .gift-widget {
-          padding: 15px 12px;
+            background: linear-gradient(135deg, #ff1493, #c71585);
+            border: 3px solid white;
+            padding: 18px 15px;
+            border-radius: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            cursor: pointer;
+            box-shadow: 0 10px 0 #8b0f5e, 0 10px 25px #ff69b4;
+            transition: 0.1s;
+            margin: 15px 0 10px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
-      }
+
+        .gift-widget:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #8b0f5e, 0 10px 20px #ff69b4;
+        }
+
+        .gift-emoji {
+            font-size: clamp(35px, 10vw, 50px);
+            filter: drop-shadow(0 3px 3px #71004b);
+        }
+
+        .gift-text {
+            font-size: clamp(24px, 7vw, 32px);
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 0 #a0006b;
+            white-space: nowrap;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: clamp(14px, 4vw, 16px);
+            color: white;
+            background: #d43f7a;
+            padding: 10px;
+            border-radius: 40px;
+            margin-top: 15px;
+            border: 2px solid white;
+        }
+
+        @media (max-width: 380px) {
+            .container { padding: 18px 12px; }
+            .plus-widget { padding: 10px 12px; }
+            .btn-widget { padding: 12px 15px; }
+            .gift-widget { padding: 15px 12px; }
+        }
     </style>
-  </head>
-  <body>
-    <!-- Плавающие цветы и сердца -->
+</head>
+<body>
+
     <div class="floating-decor decor-1">❤️</div>
     <div class="floating-decor decor-2">🌸🌼🌻</div>
     <div class="floating-decor decor-3">🌹</div>
     <div class="floating-decor decor-4">💝</div>
 
     <div class="container">
-      <!-- ПРОСТАЯ НАДПИСЬ ИРКА -->
-      <div class="name-container">
-        <h1>ИРКА</h1>
-      </div>
+        <div class="name-container">
+            <h1>ИРКА</h1>
+        </div>
+        
+        <div style="text-align: center;">
+            <span class="sub-header">💕 С 14 Февраля! 💕</span>
+        </div>
 
-      <div style="text-align: center">
-        <span class="sub-header">💕 С 14 Февраля! 💕</span>
-      </div>
+        <!-- ВИДЖЕТ: Лучшая фотка (фото в той же папке) -->
+        <div class="photo-widget">
+            <div class="widget-title">
+                <span>📸 ЛУЧШАЯ ФОТКА 📸</span>
+            </div>
+            <div class="image-wrapper">
+                <!-- Фото берется из той же папки, где лежит сайт -->
+                <img src="irka.jpg" alt="Ирка" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x600/ffc0cb/ff69b4?text=%D0%98%D1%80%D0%BA%D0%B0+%E2%9D%A4%EF%B8%8F';">
+            </div>
+        </div>
 
-      <!-- ВИДЖЕТ: Лучшая фотка -->
-      <div class="photo-widget">
-        <div class="widget-title">
-          <span>📸 ЛУЧШАЯ ФОТКА 📸</span>
+        <!-- ПЛЮСЫ -->
+        <div class="widgets-grid">
+            <div class="plus-widget"><span class="plus-emoji">😇</span><span class="plus-text">Добрая</span></div>
+            <div class="plus-widget"><span class="plus-emoji">🥰</span><span class="plus-text">Очень красивая</span></div>
+            <div class="plus-widget"><span class="plus-emoji">🤝</span><span class="plus-text">Готова помочь</span></div>
+            <div class="plus-widget"><span class="plus-emoji">👂</span><span class="plus-text">Может выслушать</span></div>
+            <div class="plus-widget"><span class="plus-emoji">🌟</span><span class="plus-text">Самая лучшая девчонка</span></div>
+            <div class="plus-widget"><span class="plus-emoji">💎</span><span class="plus-text">Безумно крутая</span></div>
+            <div class="plus-widget"><span class="plus-emoji">💖</span><span class="plus-text">С ней тепло и уютно</span></div>
         </div>
-        <div class="image-wrapper">
-          <img
-            src="images/irka.jpg"
-            alt="Ирка"
-            onerror="
-              this.onerror = null;
-              this.src =
-                'https://via.placeholder.com/500x600/ffc0cb/ff69b4?text=%D0%98%D1%80%D0%BA%D0%B0+%E2%9D%A4%EF%B8%8F';
-            "
-          />
-        </div>
-      </div>
 
-      <!-- ПЛЮСЫ -->
-      <div class="widgets-grid">
-        <div class="plus-widget">
-          <span class="plus-emoji">😇</span>
-          <span class="plus-text">Добрая</span>
+        <!-- МИНУСЫ -->
+        <div class="minus-widget">
+            <div class="minus-row">
+                <span class="minus-emoji">🙅‍♂️</span>
+                <span class="minus-text">МИНУСЫ?</span>
+                <span class="minus-emoji">🙅‍♀️</span>
+            </div>
+            <div class="minus-sub">да ты чё? она и так пиздатая!</div>
+            <div class="minus-no">🚫 МИНУСОВ НЕТ 🚫</div>
         </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">🥰</span>
-          <span class="plus-text">Очень красивая</span>
-        </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">🤝</span>
-          <span class="plus-text">Готова помочь</span>
-        </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">👂</span>
-          <span class="plus-text">Может выслушать</span>
-        </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">🌟</span>
-          <span class="plus-text">Самая лучшая девчонка</span>
-        </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">💎</span>
-          <span class="plus-text">Безумно крутая</span>
-        </div>
-        <div class="plus-widget">
-          <span class="plus-emoji">💖</span>
-          <span class="plus-text">С ней тепло и уютно</span>
-        </div>
-      </div>
 
-      <!-- МИНУСЫ -->
-      <div class="minus-widget">
-        <div class="minus-row">
-          <span class="minus-emoji">🙅‍♂️</span>
-          <span class="minus-text">МИНУСЫ?</span>
-          <span class="minus-emoji">🙅‍♀️</span>
+        <!-- КНОПКИ -->
+        <div class="buttons-panel">
+            <button class="btn-widget" id="btnLove"><span class="btn-emoji">❤️</span><span>Сказать "Я тебя люблю"</span></button>
+            <button class="btn-widget" id="btnHug"><span class="btn-emoji">🤗</span><span>Отправить обнимашки</span></button>
+            <button class="btn-widget" id="btnFlowers"><span class="btn-emoji">🌹</span><span>Подарить цветы</span></button>
         </div>
-        <div class="minus-sub">да ты чё? она и так пиздатая!</div>
-        <div class="minus-no">🚫 МИНУСОВ НЕТ 🚫</div>
-      </div>
 
-      <!-- КНОПКИ -->
-      <div class="buttons-panel">
-        <button class="btn-widget" id="btnLove">
-          <span class="btn-emoji">❤️</span>
-          <span>Сказать "Я тебя люблю"</span>
-        </button>
-        <button class="btn-widget" id="btnHug">
-          <span class="btn-emoji">🤗</span>
-          <span>Отправить обнимашки</span>
-        </button>
-        <button class="btn-widget" id="btnFlowers">
-          <span class="btn-emoji">🌹</span>
-          <span>Подарить цветы</span>
-        </button>
-      </div>
+        <!-- ПОДАРОК -->
+        <div class="gift-widget" id="btnGift">
+            <span class="gift-emoji">🎁</span>
+            <span class="gift-text">ПОЛУЧИТЬ ПОДАРОК</span>
+            <span class="gift-emoji">🎁</span>
+        </div>
 
-      <!-- ПОДАРОК -->
-      <div class="gift-widget" id="btnGift">
-        <span class="gift-emoji">🎁</span>
-        <span class="gift-text">ПОЛУЧИТЬ ПОДАРОК</span>
-        <span class="gift-emoji">🎁</span>
-      </div>
-
-      <div class="footer-note">Сделано специально для Ирки 💝 14 февраля</div>
+        <div class="footer-note">
+            Сделано специально для Ирки 💝 14 февраля
+        </div>
     </div>
 
     <script>
-      const BOT_TOKEN = "7552317390:AAH4iokLPIUM78Kc6dTtXe2yX4azxOpzrJM";
-      const CHAT_ID = "-4617457184";
+        const BOT_TOKEN = '7552317390:AAH4iokLPIUM78Kc6dTtXe2yX4azxOpzrJM';
+        const CHAT_ID = '-4617457184';
 
-      function sendTelegramMessage(messageText) {
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        const data = {
-          chat_id: CHAT_ID,
-          text: messageText,
-          parse_mode: "HTML",
-        };
+        function sendTelegramMessage(messageText) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const data = {
+                chat_id: CHAT_ID,
+                text: messageText,
+                parse_mode: 'HTML'
+            };
 
-        fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (!data.ok) {
-              console.error("Ошибка Telegram:", data);
-              alert(
-                "⚠️ Бот не в чате или не админ! Добавь @IraGift2025_bot в чат и сделай админом.",
-              );
-            }
-          })
-          .catch(() => {
-            alert("⚠️ Проблема с интернетом. Не удалось отправить.");
-          });
-      }
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.ok) {
+                    console.error('Ошибка Telegram:', data);
+                    alert('⚠️ Бот не в чате или не админ! Добавь @IraGift2025_bot в чат и сделай админом.');
+                }
+            })
+            .catch(() => {
+                alert('⚠️ Проблема с интернетом. Не удалось отправить.');
+            });
+        }
 
-      // Кнопки
-      document.getElementById("btnLove").addEventListener("click", () => {
-        sendTelegramMessage("❤️ Ирка, я тебя очень сильно люблю! ❤️");
-      });
+        document.getElementById('btnLove').addEventListener('click', () => {
+            sendTelegramMessage('❤️ Ирка, я тебя очень сильно люблю! ❤️');
+        });
 
-      document.getElementById("btnHug").addEventListener("click", () => {
-        sendTelegramMessage(
-          "🤗 Ирочка, лови огромные обнимашки от всего сердца! 🤗",
-        );
-      });
+        document.getElementById('btnHug').addEventListener('click', () => {
+            sendTelegramMessage('🤗 Ирочка, лови огромные обнимашки от всего сердца! 🤗');
+        });
 
-      document.getElementById("btnFlowers").addEventListener("click", () => {
-        sendTelegramMessage(
-          "🌹🌹🌹 Для самой красивой девушки миллион виртуальных роз! Цветы тебе! 🌹🌹🌹",
-        );
-      });
+        document.getElementById('btnFlowers').addEventListener('click', () => {
+            sendTelegramMessage('🌹🌹🌹 Для самой красивой девушки миллион виртуальных роз! Цветы тебе! 🌹🌹🌹');
+        });
 
-      // Кнопка подарка
-      document.getElementById("btnGift").addEventListener("click", () => {
-        sendTelegramMessage(
-          '🔔 Запрос Матвею: Ирка нажала кнопку "ПОЛУЧИТЬ ПОДАРОК"! Нужно вручать подарок! 🎁',
-        );
-        alert("✅ Запрос передан Матвею! Ожидай подарок 🎁");
-
-        const btn = document.getElementById("btnGift");
-        btn.style.transform = "scale(0.98)";
-        setTimeout(() => (btn.style.transform = ""), 150);
-      });
+        document.getElementById('btnGift').addEventListener('click', () => {
+            sendTelegramMessage('🔔 Запрос Матвею: Ирка нажала кнопку "ПОЛУЧИТЬ ПОДАРОК"! Нужно вручать подарок! 🎁');
+            alert('✅ Запрос передан Матвею! Ожидай подарок 🎁');
+            
+            const btn = document.getElementById('btnGift');
+            btn.style.transform = 'scale(0.98)';
+            setTimeout(() => btn.style.transform = '', 150);
+        });
     </script>
-  </body>
+</body>
 </html>
