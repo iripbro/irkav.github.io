@@ -1,572 +1,318 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Человек и звёзды | О нас</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Защита от мошенников</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Segoe UI", Arial, sans-serif;
-        line-height: 1.6;
-        background: linear-gradient(135deg, #0a1928 0%, #1b3b4f 100%);
-        color: #333;
-        min-height: 100vh;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 30px auto;
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        overflow: hidden;
-      }
-
-      .header {
-        background: linear-gradient(135deg, #0b1a3a 0%, #1a3f6e 100%);
-      }
-
-      .logo {
-        height: 180px;
-        background-image: url("image/logo2.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        background: rgba(255, 255, 255, 0.1);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .nav a {
-        color: white;
-        text-decoration: none;
-        padding: 18px 30px;
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        transition: all 0.3s;
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .nav a:last-child {
-        border-right: none;
-      }
-
-      .nav a:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-      }
-
-      .nav a.active {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: inset 0 -3px 0 #ffd700;
-      }
-
-      .content {
-        padding: 40px;
-      }
-
-      h1 {
-        font-size: 48px;
-        color: #0b1a3a;
-        text-align: center;
-        margin-bottom: 15px;
-        font-weight: 700;
-        letter-spacing: 2px;
-      }
-
-      .subtitle {
-        text-align: center;
-        font-size: 20px;
-        color: #1a3f6e;
-        font-style: italic;
-        margin-bottom: 50px;
-        position: relative;
-      }
-
-      .subtitle::after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, #1a3f6e, transparent);
-        margin: 20px auto 0;
-      }
-
-      h2 {
-        font-size: 32px;
-        color: #0b1a3a;
-        margin: 40px 0 20px;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #1a3f6e;
-      }
-
-      h3 {
-        font-size: 24px;
-        color: #1a3f6e;
-        margin: 30px 0 15px;
-      }
-
-      p {
-        font-size: 17px;
-        margin-bottom: 20px;
-        line-height: 1.8;
-      }
-
-      /* Карточки команды */
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 40px;
-        margin: 40px 0;
-      }
-
-      .team-card {
-        background: linear-gradient(135deg, #f8f9fa, #ffffff);
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-        border: 1px solid rgba(26, 63, 110, 0.2);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .team-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      .photo-placeholder {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #0b1a3a, #1a3f6e);
-        margin-bottom: 25px;
-        border: 5px solid #ffd700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-
-      .photo-placeholder img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .photo-placeholder div {
-        color: #ffd700;
-        font-size: 60px;
-        font-weight: bold;
-      }
-
-      .team-name {
-        font-size: 28px;
-        font-weight: 700;
-        color: #0b1a3a;
-        margin-bottom: 5px;
-      }
-
-      .team-class {
-        font-size: 20px;
-        color: #1a3f6e;
-        font-weight: 600;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 2px dashed #ffd700;
-      }
-
-      .team-bio {
-        text-align: left;
-        width: 100%;
-      }
-
-      .team-bio p {
-        margin-bottom: 12px;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .team-bio i {
-        color: #1a3f6e;
-        font-style: normal;
-        font-weight: 600;
-        min-width: 100px;
-      }
-
-      .achievement {
-        background: linear-gradient(135deg, #f0f7ff, #e6f0fa);
-        padding: 15px;
-        border-radius: 15px;
-        margin: 15px 0;
-        border-left: 4px solid #ffd700;
-      }
-
-      .achievement strong {
-        color: #0b1a3a;
-        font-size: 18px;
-      }
-
-      .sport-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin: 15px 0;
-        text-align: center;
-      }
-
-      .stat-item {
-        background: white;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .stat-value {
-        font-size: 24px;
-        font-weight: 700;
-        color: #1a3f6e;
-      }
-
-      .stat-label {
-        font-size: 12px;
-        color: #666;
-      }
-
-      .quote {
-        font-style: italic;
-        color: #1a3f6e;
-        font-size: 18px;
-        text-align: center;
-        margin: 20px 0;
-        padding: 15px;
-        background: rgba(255, 215, 0, 0.1);
-        border-radius: 15px;
-        border: 1px solid #ffd700;
-      }
-
-      /* Технологии */
-      .tech-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin: 30px 0;
-        justify-content: center;
-      }
-
-      .tech-item {
-        background: linear-gradient(135deg, #0b1a3a, #1a3f6e);
-        color: white;
-        padding: 12px 25px;
-        border-radius: 50px;
-        font-size: 18px;
-        font-weight: 600;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
-        border: 2px solid transparent;
-      }
-
-      .tech-item:hover {
-        transform: translateY(-5px);
-        border-color: #ffd700;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .footer {
-        background: #0b1a3a;
-        color: white;
-        padding: 30px 40px;
-        margin-top: 20px;
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .authors {
-        font-size: 20px;
-        font-weight: bold;
-        color: #ffd700;
-      }
-
-      .school {
-        font-size: 16px;
-        opacity: 0.9;
-      }
-
-      .copyright {
-        text-align: center;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        font-size: 14px;
-        opacity: 0.7;
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          margin: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        .content {
-          padding: 25px;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f5;
+            color: #1a2a3a;
+            line-height: 1.4;
         }
-
-        h1 {
-          font-size: 32px;
+        /* простая шапка */
+        .header {
+            background: #1e3a5f;
+            color: white;
+            padding: 12px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
         }
-
-        .nav a {
-          padding: 12px 20px;
-          font-size: 16px;
-        }
-
-        .logo {
-          height: 120px;
-        }
-
-        .team-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .footer-content {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 480px) {
         .nav {
-          flex-direction: column;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
         }
-
         .nav a {
-          border-right: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-          text-align: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 5px 0;
         }
-
-        .nav a:last-child {
-          border-bottom: none;
+        .nav a:hover {
+            text-decoration: underline;
         }
-
-        .tech-item {
-          font-size: 16px;
-          padding: 10px 20px;
+        main {
+            margin-top: 65px;
         }
-      }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        section {
+            background: white;
+            padding: 20px 18px;
+            margin-bottom: 0;
+            border-bottom: 1px solid #ccc;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #1e3a5f;
+            border-left: 5px solid #ff8c00;
+            padding-left: 12px;
+        }
+        h3 {
+            font-size: 20px;
+            margin: 15px 0 8px 0;
+            color: #2c5a7a;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .card-item {
+            background: #f5f9ff;
+            padding: 12px 15px;
+            border-radius: 12px;
+            flex: 1 1 260px;
+            border: 1px solid #dce5f0;
+        }
+        .card-item strong {
+            color: #1e6f9f;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 6px;
+        }
+        ul {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .photo-item {
+            background: #fafcfd;
+            border-radius: 14px;
+            padding: 8px;
+            text-align: center;
+            width: 170px;
+            border: 1px solid #cddfea;
+        }
+        .photo-item img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            background: #ddd;
+        }
+        .video-container {
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            background: #000;
+        }
+        .video-caption {
+            background: #f5f9ff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e6f9f;
+            border-radius: 0 0 14px 14px;
+            margin-top: -4px;
+        }
+        .footer {
+            background: #1e3a5f;
+            color: #c7e2f2;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        .top-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 13px;
+            background: #e0e9f2;
+            padding: 5px 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-weight: bold;
+        }
+        .top-link:hover {
+            background: #ffcd94;
+        }
+        @media (max-width: 700px) {
+            .nav {
+                gap: 15px;
+            }
+            .nav a {
+                font-size: 14px;
+            }
+            section {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .photo-item {
+                width: 140px;
+            }
+        }
+        .small-note {
+            font-size: 13px;
+            color: #5a6e7c;
+            margin-top: 8px;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="logo"></div>
-        <nav class="nav">
-          <a href="index.html">Главная</a>
-          <a href="poetry.html">Поэзия</a>
-          <a href="art.html">Искусство</a>
-          <a href="gallery.html">Галерея</a>
-          <a href="about.html" class="active">О себе</a>
-        </nav>
-      </div>
+</head>
+<body>
 
-      <div class="content">
-        <h1>О нас</h1>
-        <div class="subtitle">Кто мы и чем занимаемся</div>
-
-        <div class="team-grid">
-          <!-- Матвей -->
-          <div class="team-card">
-            <div class="photo-placeholder">
-              <!-- Сюда вставить фото Матвея -->
-              <div>М</div>
-            </div>
-            <div class="team-name">Маркитанов Матвей</div>
-            <div class="team-class">10А класс, Лицей №73</div>
-
-            <div class="team-bio">
-              <p><i>🎂 Возраст:</i> 16 лет</p>
-              <p><i>📍 Роль:</i> Разработчик, дизайнер, автор идеи</p>
-              <p>
-                <i>💻 Что делал:</i> Верстка всех страниц, дизайн, JavaScript
-                для галереи, адаптация под мобилки
-              </p>
-
-              <div class="achievement">
-                <strong>🏀 Баскетбол</strong>
-                <p>
-                  Играю в баскетбол 5 лет. Выступаю за школьную команду. Любимый
-                  игрок — Леброн Джеймс. Участвовал в городских соревнованиях.
-                </p>
-              </div>
-
-              <div class="sport-stats">
-                <div class="stat-item">
-                  <div class="stat-value">5 лет</div>
-                  <div class="stat-label">в спорте</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-value">15+</div>
-                  <div class="stat-label">турниров</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-value">🏀</div>
-                  <div class="stat-label">Разыгрывающий</div>
-                </div>
-              </div>
-
-              <p>
-                <i>🎯 Хобби:</i> Кроме баскетбола увлекаюсь астрономией,
-                программированием и фотографией. Люблю смотреть на звезды и
-                играть в видеоигры.
-              </p>
-              <p><i>📚 Любимый предмет:</i> Информатика и физ-ра</p>
-            </div>
-          </div>
-
-          <!-- Дима (исправленная версия) -->
-          <div class="team-card">
-            <div class="photo-placeholder">
-              <!-- Сюда вставить фото Димы -->
-              <div>Д</div>
-            </div>
-            <div class="team-name">Дмитрий Ежов</div>
-            <div class="team-class">10А класс, Лицей №73</div>
-
-            <div class="team-bio">
-              <p><i>🎂 Возраст:</i> 16 лет</p>
-              <p>
-                <i>📍 Роль:</i> Контент-менеджер, исследователь, автор текстов
-              </p>
-              <p>
-                <i>📝 Что делал:</i> Собирал информацию, подбирал стихи, писал
-                тексты про созвездия и культуру, искал изображения
-              </p>
-
-              <div class="achievement">
-                <strong>🏉 Регби (КМС)</strong>
-                <p>
-                  Кандидат в мастера спорта по регби. Занимаюсь профессионально
-                  7 лет. Член сборной города, участник первенств России. Моя
-                  позиция — hooker (проститутка).
-                </p>
-              </div>
-
-              <div class="sport-stats">
-                <div class="stat-item">
-                  <div class="stat-value">7 лет</div>
-                  <div class="stat-label">в регби</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-value">КМС</div>
-                  <div class="stat-label">разряд</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-value">100+</div>
-                  <div class="stat-label">матчей</div>
-                </div>
-              </div>
-
-              <p><i>🏆 Достижения:</i></p>
-              <ul style="margin-left: 20px; margin-bottom: 15px">
-                <li>2 место первенства России</li>
-                <li>Лучший игрок сезона 2024</li>
-              </ul>
-
-              <p><i>💕 Личная жизнь:</i> Люблю Ксюшу (она лучшая ❤️)</p>
-
-              <p>
-                <i>🎯 В свободное время:</i> Гуляю с друзьями, смотрю мемы,
-                особенно залипаю в "Мелстройность" (это прикольно, хоть и
-                странно). Мемы с Мелстрой — огонь.
-              </p>
-
-              <p>
-                <i>⏰ Про свободное время:</i> Вообще его мало, потому что я
-                стремлюсь к совершенству как Дэвид Гогинс. Постоянно работаю над
-                собой, тренируюсь и развиваюсь.
-              </p>
-
-              <div class="quote">
-                <strong>СТАНЬ ЖЕСТЧЕ! 🦍</strong><br />
-                "СТРЕМИСЬ К СОВЕРШЕНСТВУ КАК ДЭВИД ГОГИНС"<br />
-                #STAY HARD
-              </div>
-
-              <p>
-                <i>📚 Любимый предмет:</i> Физ-ра (очевидно) и когда можно
-                отдохнуть после тренировки
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <h2>О проекте</h2>
-        <p>
-          Наш проект "Человек и звёзды" мы делали для конкурса "Сделай сайт
-          своими руками". Тема — "Человек — это часть Вселенной". Мы решили
-          показать, как звезды влияли на культуру, поэзию и искусство разных
-          народов. Особенно нам нравится, как писал о звездах Лермонтов — он
-          реально круто передавал这种感觉 космоса.
-        </p>
-
-        <p>
-          Матвей отвечал за техническую часть: верстку, дизайн, слайд-шоу в
-          галерее и чтобы всё красиво работало на телефонах. Дима собирал
-          материалы: искал стихи, информацию про созвездия, подбирал картины и
-          фотографии. Вместе мы придумали структуру и наполнение.
-        </p>
-
-        <h2>Что использовали</h2>
-        <div class="tech-list">
-          <span class="tech-item">HTML5</span>
-          <span class="tech-item">CSS3</span>
-          <span class="tech-item">JavaScript</span>
-          <span class="tech-item">Flexbox</span>
-          <span class="tech-item">CSS Grid</span>
-          <span class="tech-item">Адаптив</span>
-        </div>
-        <p>
-          Всё писали руками, без шаблонов. Код чистый, без фреймворков — как
-          требуют в конкурсе.
-        </p>
-
-        <h2>Наши контакты</h2>
-        <p>
-          <strong>Дима:</strong>(Telegram) (Ксюша, привет если
-          читаешь!)
-        </p>
-
-      <div class="footer">
-        <div class="footer-content">
-          <div class="authors">Маркитанов Матвей и Дмитрий Ежов | 10А</div>
-          <div class="school">МБОУ Лицей №73</div>
-          <div class="year">2025</div>
-        </div>
-      </div>
+<div class="header">
+    <div class="nav">
+        <a href="#about">Кто такие мошенники</a>
+        <a href="#types">Виды мошенничества</a>
+        <a href="#protect">Как защититься</a>
+        <a href="#event">Мероприятие</a>
     </div>
-  </body>
-</html>
+</div>
 
+<main>
+<div class="container">
+
+    <section id="about">
+        <h2>Кто такие мошенники</h2>
+        <p><strong>Мошенничество</strong> — это хищение чужого имущества или приобретение права на него путем обмана или злоупотребления доверием (статья 159 Уголовного кодекса РФ). Главная особенность: жертва <strong>добровольно</strong> передает ценности преступнику, будучи введенной в заблуждение.</p>
+        <p>По данным МВД России, мошенничество занимает второе место среди всех преступлений в стране, уступая только кражам. Ежегодно тысячи граждан теряют миллиарды рублей из-за действий аферистов. Особенно активны мошенники в сфере IT-технологий: звонки от «службы безопасности банка», поддельные сайты, фальшивые инвестиционные платформы.</p>
+        
+        <h3>Ключевые признаки мошенничества:</h3>
+        <ul>
+            <li><strong>Обман</strong> — сообщение ложных сведений, подделка документов или умышленное сокрытие правды.</li>
+            <li><strong>Злоупотребление доверием</strong> — использование дружеских, родственных или служебных отношений в корыстных целях.</li>
+            <li><strong>Добровольность жертвы</strong> — владелец имущества сам передает его, считая сделку законной.</li>
+        </ul>
+        <p>Важно помнить: если умысел на завладение чужим имуществом возник после получения вещи, это может квалифицироваться как растрата, а не мошенничество.</p>
+        <a href="#" class="top-link">↑ Наверх</a>
+    </section>
+
+    <section id="types">
+        <h2>Основные виды мошенничества</h2>
+        <div class="card-list">
+            <div class="card-item"><strong>📧 Фишинг</strong> Поддельные письма от банков, госуслуг, коллег. Крадут логины, пароли, данные карт.</div>
+            <div class="card-item"><strong>📞 Звонки из «банка»</strong> Сообщают о подозрительной операции, просят назвать код из СМС или перевести деньги на «безопасный счет».</div>
+            <div class="card-item"><strong>💸 Предоплата</strong> Продажа товаров с требованием полной предоплаты — после получения денег мошенник исчезает.</div>
+            <div class="card-item"><strong>🔄 Переплата</strong> Злоумышленник переводит «лишние» деньги (украденные) и просит вернуть разницу — жертва теряет свои средства.</div>
+            <div class="card-item"><strong>🏆 Лже-выигрыши</strong> Вы выиграли приз, но нужно оплатить налог или доставку — после оплаты ничего не приходит.</div>
+            <div class="card-item"><strong>📈 Инвестиции без риска</strong> Обещают высокую доходность, но в итоге забирают вложения или оформляют кредит на жертву.</div>
+            <div class="card-item"><strong>🎭 Фальшивая благотворительность</strong> Сбор денег на лечение детей, помощь животным — деньги идут мошенникам.</div>
+            <div class="card-item"><strong>🏠 Аренда жилья</strong> Сдают несуществующие квартиры, берут предоплату и исчезают.</div>
+        </div>
+        <p>Также распространены мошенничества на сайтах объявлений: просят перейти по ссылке для «оплаты» или прислать код из СМС. Настоящие сотрудники банка и полиции никогда не просят переводить средства на «резервные» счета.</p>
+        <div class="small-note">Источник: отчеты ЦБ РФ, данные МВД, материалы Судебного департамента.</div>
+        <a href="#" class="top-link">↑ Наверх</a>
+    </section>
+
+    <section id="protect">
+        <h2>Как защитить себя от мошенников</h2>
+        <ul>
+            <li><strong>Будьте бдительны.</strong> Не доверяйте звонкам с незнакомых номеров. Если звонят из «банка» — положите трубку и перезвоните по номеру, указанному на карте.</li>
+            <li><strong>Никогда не сообщайте код из СМС, PIN-код, CVV.</strong> Сотрудники банка не запрашивают эти данные.</li>
+            <li><strong>Не переходите по ссылкам из подозрительных писем и сообщений.</strong> Фишинговые сайты выглядят как настоящие, но крадут данные.</li>
+            <li><strong>Используйте двухфакторную аутентификацию</strong> в соцсетях и почте.</li>
+            <li><strong>Проверяйте информацию о благотворительных фондах</strong> через официальные реестры.</li>
+            <li><strong>Установите приложение банка с уведомлениями</strong> и подключите СМС-информирование.</li>
+        </ul>
+        
+        <h3>Что делать, если вы стали жертвой мошенников</h3>
+        <ul>
+            <li><strong>Немедленно свяжитесь с банком</strong> по горячей линии, заблокируйте карту. Согласно ст. 9 Федерального закона «О национальной платежной системе», банк обязан вернуть средства, если клиент не нарушал правила пользования картой.</li>
+            <li><strong>Подайте заявление в полицию</strong> — в отделении по месту жительства или по телефону горячей линии МВД: 8-800-222-74-47.</li>
+            <li><strong>Сохраните все доказательства:</strong> номера телефонов, ссылки, чеки, переписку в мессенджерах.</li>
+        </ul>
+        <p>Дополнительная профилактика: регулярно обновляйте пароли, не храните все деньги на одной карте, используйте виртуальные карты для онлайн-покупок. По данным ЦБ РФ, более 60% мошеннических операций совершаются с использованием методов социальной инженерии.</p>
+        <a href="#" class="top-link">↑ Наверх</a>
+    </section>
+
+    <section id="event">
+        <h2>Мероприятие с общественностью</h2>
+        <p>В рамках проекта по кибербезопасности мы провели открытый урок для школьников и студентов. На занятии разобрали реальные случаи обмана, учились распознавать фишинг и противостоять уловкам аферистов. Ниже — фото, иллюстрирующие типичные портреты мошенников, а также видеофрагмент нашего урока.</p>
+        
+        <div class="photo-grid">
+            <div class="photo-item">
+                <img src="1.jpg" alt="Мошенник" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22%23367fb6%22/%3E%3Ctext%20x=%2250%25%22%20y=%2250%25%22%20fill=%22white%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3E1.jpg%3C/text%3E%3C/svg%3E'">
+                <span>Телефонный мошенник</span>
+            </div>
+            <div class="photo-item">
+                <img src="2.jpg" alt="Фишинг" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22%23367fb6%22/%3E%3Ctext%20x=%2250%25%22%20y=%2250%25%22%20fill=%22white%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3E2.jpg%3C/text%3E%3C/svg%3E'">
+                <span>Фишинговая страница</span>
+            </div>
+            <div class="photo-item">
+                <img src="3.jpg" alt="Аферист" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22%23367fb6%22/%3E%3Ctext%20x=%2250%25%22%20y=%2250%25%22%20fill=%22white%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3E3.jpg%3C/text%3E%3C/svg%3E'">
+                <span>Лже-брокер</span>
+            </div>
+            <div class="photo-item">
+                <img src="4.jpg" alt="Предоплата" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22%23367fb6%22/%3E%3Ctext%20x=%2250%25%22%20y=%2250%25%22%20fill=%22white%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3E4.jpg%3C/text%3E%3C/svg%3E'">
+                <span>Обман с предоплатой</span>
+            </div>
+        </div>
+
+        <!-- Видео — работает как в первом варианте -->
+        <div class="video-container">
+            <video controls>
+                <source src="vid.MOV" type="video/mp4">
+                <source src="vid.MOV" type="video/quicktime">
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео. <a href="vid.MOV">Скачать видео</a>
+            </video>
+        </div>
+        <div class="video-caption">
+            🎥 Видео с нашего открытого урока — нажмите на кнопку воспроизведения
+        </div>
+
+        <p>На занятии также обсуждались реальные истории пострадавших: как пенсионерка перевела мошенникам 2 млн рублей, поверив в «дополнительную выплату», и как студент потерял деньги при аренде квартиры. Важно рассказывать о таких схемах близким и пожилым родственникам — они наиболее уязвимы.</p>
+        <a href="#" class="top-link">↑ Наверх</a>
+    </section>
+
+    <section>
+        <h2>Статистика и законы</h2>
+        <p>По данным Генпрокуратуры РФ, в 2024 году количество зарегистрированных мошенничеств выросло на 23% по сравнению с предыдущим годом. Самый частый способ — дистанционное мошенничество (звонки, мессенджеры, поддельные сайты). В Уголовном кодексе за мошенничество предусмотрено наказание вплоть до 10 лет лишения свободы (ч. 4 ст. 159 УК РФ — организованная группа либо особо крупный размер).</p>
+        <p>Также существует статья 159.6 УК РФ — мошенничество в сфере компьютерной информации. Если вас обманули через интернет, всегда фиксируйте все цифровые следы: IP-адреса, номера кошельков, скриншоты.</p>
+        <p>Помните: мошенники постоянно придумывают новые легенды. Будьте в курсе — читайте предупреждения на сайтах банков и МВД. Никогда не переводите деньги незнакомцам, даже если история звучит очень правдоподобно.</p>
+        <a href="#" class="top-link">↑ Наверх</a>
+    </section>
+</div>
+</main>
+
+<footer class="footer">
+    <p>© 2025 Проект по кибербезопасности | Разработали: Рожко Никита, Илья Малыгин, Дмитрий Александров — 10А</p>
+    <p style="margin-top:6px; font-size:12px;">Материалы основаны на ст. 159 УК РФ, рекомендациях ЦБ РФ и открытых данных МВД России</p>
+</footer>
+
+</body>
+</html>
